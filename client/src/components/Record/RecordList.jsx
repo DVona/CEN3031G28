@@ -11,8 +11,10 @@ import {
   Th,
   Thead,
   Tr,
-  useToast, // Import useToast for displaying notifications
+  useToast,
 } from "@chakra-ui/react";
+
+import { API_URL } from "../../config";
 
 const Record = (props) => (
   <Tr>
@@ -43,7 +45,7 @@ export default function RecordList() {
   useEffect(() => {
     async function getRecords() {
       try {
-        const response = await fetch(`http://localhost:5000/record/`);
+        const response = await fetch(`${API_URL}/record/`);
         if (!response.ok) {
           throw new Error(`An error occurred: ${response.statusText}`);
         }
@@ -65,7 +67,7 @@ export default function RecordList() {
 
   async function deleteRecord(id) {
     try {
-      const response = await fetch(`http://localhost:5000/record/${id}`, {
+      const response = await fetch(`${API_URL}/record/${id}`, {
         method: "DELETE",
       });
       if (!response.ok) {

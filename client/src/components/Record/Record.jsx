@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Box, Heading } from "@chakra-ui/react";
 import RecordForm from "./Form/RecordForm";
+import { API_URL } from "../../config";
 
 export default function Record() {
   const [form, setForm] = useState({
@@ -18,9 +19,7 @@ export default function Record() {
       const id = params.id?.toString() || undefined;
       if (!id) return;
       setIsNew(false);
-      const response = await fetch(
-        `http://localhost:5000/record/${params.id.toString()}`
-      );
+      const response = await fetch(`${API_URL}/record/${params.id.toString()}`);
       if (!response.ok) {
         const message = `An error has occurred: ${response.statusText}`;
         console.error(message);
@@ -49,7 +48,7 @@ export default function Record() {
     try {
       let response;
       if (isNew) {
-        response = await fetch("http://localhost:5000/record", {
+        response = await fetch(`${API_URL}/record`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -57,7 +56,7 @@ export default function Record() {
           body: JSON.stringify(person),
         });
       } else {
-        response = await fetch(`http://localhost:5000/record/${params.id}`, {
+        response = await fetch(`${API_URL}/record/${params.id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SignUpForm from "./Form/SignUpForm";
+import { API_URL } from "../../config";
 
 function SignUp() {
   const [form, setForm] = useState({
@@ -25,7 +26,7 @@ function SignUp() {
       }
 
       // Send POST request to backend signup route
-      const response = await fetch("http://localhost:5000/signup", {
+      const response = await fetch(`${API_URL}/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
