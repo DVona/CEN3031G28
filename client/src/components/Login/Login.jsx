@@ -19,7 +19,7 @@ export default function Login() {
     e.preventDefault();
     const credentials = { ...form };
     try {
-      const response = await fetch("http://localhost:5000/login", {
+      const response = await fetch("http://localhost:5001/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

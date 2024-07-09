@@ -5,7 +5,9 @@ import records from "./routes/record.js";
 import login from "./routes/login.js";
 import signup from "./routes/signup.js";
 
-const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT || 5000; 
+// does not work on my macbook, changing here
+const PORT = 5001;
 const app = express();
 
 app.use(cors());
