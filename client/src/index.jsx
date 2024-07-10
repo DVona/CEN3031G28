@@ -7,6 +7,7 @@ import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
 import Record from "./components/Record/Record";
 import RecordList from "./components/Record/RecordList";
+//import Ticket from "./components/Ticket/Ticket";
 import theme from "./theme";
 
 const router = createBrowserRouter([
