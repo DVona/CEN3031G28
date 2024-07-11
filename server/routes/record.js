@@ -31,8 +31,9 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// Hash password
+// Create a new record
 router.post("/", async (req, res) => {
+  // Hash function
   const hashedPassword = await bcrypt.hash(req.body.password, saltTimes);
   try {
     const newRecord = new Record({
