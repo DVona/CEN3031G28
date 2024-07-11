@@ -83,3 +83,26 @@
     font-weight: 700;
     cursor: pointer;
 }
+
+/*correct validation when requirements are met*/
+.valid{
+    color: #98fb98;
+}
+
+.valid::before{
+    position: relative;
+    left: -35px;
+    /*content: ;*/
+}
+
+/*invalidation when requirements aren't met*/
+.invalid{
+    color: #f47174;
+}
+
+.invalid::before{
+    position: relative;
+    left: -35px;
+    /*content: ;*/
+
+}
