@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const recrodSchema = new mongoose.Schema({
+const recordSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -13,8 +13,11 @@ const recrodSchema = new mongoose.Schema({
     type: String,
     default: "User",
   },
+  tickets: { // Contains ticket ids associated with a user or assigned to an employee
+    type: [String],
+  }
 });
 
-const Record = mongoose.model("Record", recrodSchema);
+const Record = mongoose.model("Record", recordSchema);
 
 export default Record;
