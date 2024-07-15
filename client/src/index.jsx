@@ -10,6 +10,7 @@ import RecordList from "./components/Record/RecordList";
 //import Ticket from "./components/Ticket/Ticket";
 import theme from "./theme";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
