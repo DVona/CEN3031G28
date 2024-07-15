@@ -9,6 +9,7 @@ import Record from "./components/Record/Record";
 import RecordList from "./components/Record/RecordList";
 import theme from "./theme";
 
+
 const router = createBrowserRouter([
   {
     path: "/",

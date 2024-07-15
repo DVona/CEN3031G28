@@ -1,9 +1,10 @@
 import express from "express";
 import connectDB from "../database/connection.js";
 import Record from "../models/record.js";
+import bcrypt from "bcryptjs";
 
 const router = express.Router();
-
+const saltTimes = 8;
 // Get all records
 router.get("/", async (req, res) => {
   try {
@@ -32,10 +33,12 @@ router.get("/:id", async (req, res) => {
 
 // Create a new record
 router.post("/", async (req, res) => {
+  // Hash function
+  const hashedPassword = await bcrypt.hash(req.body.password, saltTimes);
   try {
     const newRecord = new Record({
       username: req.body.username,
-      password: req.body.password,
+      password: hashedPassword,
       level: req.body.level,
     });
     const savedRecord = await newRecord.save();
