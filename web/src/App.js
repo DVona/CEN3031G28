@@ -1,10 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import { LoginPage } from './Components/LoginPage/LoginPage';
+import React, {useState} from 'react';
 
 function App() {
+  const [token, setToken] = useState;
   return (
-    <div>
+    <div className='wrapper'>
       <LoginPage/>
     </div>
   );
