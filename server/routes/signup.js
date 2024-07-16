@@ -1,6 +1,6 @@
 import express from "express";
 import Record from "../models/record.js";
-import bcrypt from'bcryptjs';
+
 const router = express.Router();
 
 // Sign-up endpoint
@@ -12,7 +12,8 @@ router.post("/", async (req, res) => {
     // Example: Validate input (username and password)
     if (!username || !password) {
       return res
-        .status(400).json({ message: "Username and password are required" });
+        .status(400)
+        .json({ message: "Username and password are required" });
     }
 
     // Example: Check if the username already exists
@@ -21,7 +22,6 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ message: "Username already exists" });
     }
 
-    const hashPassword = await bcrypt.hash(password, 10);
     // Create a new user record
     const newUser = new Record({ username, password });
     await newUser.save();
