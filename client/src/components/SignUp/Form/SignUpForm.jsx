@@ -12,7 +12,7 @@ function SignUpForm({ form, updateForm, onSubmit }) {
         borderWidth="1px"
         rounded="lg"
         p={4}
-        width="75%"
+        width="50%"
       >
         <Flex
           direction="column"

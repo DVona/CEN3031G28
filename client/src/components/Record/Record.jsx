@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Heading, Flex } from "@chakra-ui/react";
 import RecordForm from "./Form/RecordForm";
 import { API_URL } from "../../config";
 
@@ -77,11 +77,13 @@ export default function Record() {
   }
 
   return (
-    <Box>
-      <Heading as="h3" size="lg" p={4}>
-        Create/Update User Information
-      </Heading>
-      <RecordForm form={form} updateForm={updateForm} onSubmit={onSubmit} />
-    </Box>
+    <Flex height="100vh" alignItems="center" justifyContent="center">
+      <Box width="50%">
+        <Heading as="h3" size="lg" p={4}>
+          Create/Update User Information
+        </Heading>
+        <RecordForm form={form} updateForm={updateForm} onSubmit={onSubmit} />
+      </Box>
+    </Flex>
   );
 }

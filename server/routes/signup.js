@@ -1,5 +1,6 @@
 import express from "express";
 import Record from "../models/record.js";
+import bcrypt from "bcryptjs";
 
 const router = express.Router();
 
@@ -23,7 +24,9 @@ router.post("/", async (req, res) => {
     }
 
     // Create a new user record
-    const newUser = new Record({ username, password });
+    const saltTimes = 8;
+    const hashedPassword = await bcrypt.hash(password, saltTimes);
+    const newUser = new Record({username, password: hashedPassword});
     await newUser.save();
 
     // Respond with success message
