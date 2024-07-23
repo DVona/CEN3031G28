@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./database/connection.js";
 import records from "./routes/record.js";
-import tickets from "./routes/ticketRoutes.js";
+import ticket from "./routes/ticketRoutes.js";
 import login from "./routes/login.js";
 import signup from "./routes/signup.js";
 import path from "path";
@@ -21,7 +21,7 @@ app.use(express.json());
 app.use("/login", login);
 app.use("/signup", signup);
 app.use("/record", records);
-app.use("/ticket", tickets);
+app.use("/ticket", ticket);
 
 
 

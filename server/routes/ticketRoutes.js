@@ -104,8 +104,9 @@ router.get("/:id", async (req, res) => {
 });
 
 // Create a new ticket
-router.post("/", async (req, res) => {
+router.post("/form", async (req, res) => {
   try {
+    /*
     const response = await fetch(`${API_URL}/tickets/ticketCountUp`);
     if (!response.ok) {
       const message = `An error has occurred: ${response.statusText}`;
@@ -113,8 +114,9 @@ router.post("/", async (req, res) => {
       return;
     }
     const ticketCounter = await response.json();
+    */
     const newTicket = new Ticket({ 
-      id: ticketCounter.ticketCount,
+      //id: ticketCounter.ticketCount,
       category: req.body.category,
       estimate: req.body.estimate,
       schedule: req.body.schedule,
