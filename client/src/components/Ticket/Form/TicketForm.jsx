@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 import Fields from "./Fields";
 
-function LoginForm({ form, updateForm, onSubmit, onSignUp }) {
+function SignUpForm({ form, updateForm, onSubmit }) {
   return (
     <Flex height="100vh" alignItems="center" justifyContent="center">
       <Box
@@ -12,7 +12,7 @@ function LoginForm({ form, updateForm, onSubmit, onSignUp }) {
         borderWidth="1px"
         rounded="lg"
         p={4}
-        width="50%"
+        width="75%"
       >
         <Flex
           direction="column"
@@ -32,7 +32,7 @@ function LoginForm({ form, updateForm, onSubmit, onSignUp }) {
             width="full"
             size="lg"
           >
-            Login
+            Sign Up
           </Button>
           <Button
             type="submit"
@@ -40,10 +40,10 @@ function LoginForm({ form, updateForm, onSubmit, onSignUp }) {
             mt={4}
             width="full"
             size="lg"
-            as={Link} 
-            to="/signup" 
+            as={Link}
+            to="/"
           >
-            Sign Up
+            Return to Login
           </Button>
         </Stack>
       </Box>
@@ -51,4 +51,4 @@ function LoginForm({ form, updateForm, onSubmit, onSignUp }) {
   );
 }
 
-export default LoginForm;
+export default SignUpForm;
