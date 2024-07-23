@@ -8,6 +8,7 @@ import SignUp from "./components/SignUp/SignUp";
 import Record from "./components/Record/Record";
 import Ticket from "./components/Ticket/TicketForm";
 import RecordList from "./components/Record/RecordList";
+//import Ticket from "./components/Ticket/Ticket";
 import theme from "./theme";
 
 
