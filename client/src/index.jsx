@@ -6,6 +6,7 @@ import App from "./app";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
 import Record from "./components/Record/Record";
+import Ticket from "./components/Ticket/TicketForm";
 import RecordList from "./components/Record/RecordList";
 import theme from "./theme";
 
@@ -46,6 +47,16 @@ const router = createBrowserRouter([
       {
         path: "/edit/:id",
         element: <Record />,
+      },
+    ],
+  },
+  {
+    path: "/ticket/",
+    element: <App />,
+    children: [
+      {
+        path: "/edit/:id",
+        element: <Ticket />,
       },
     ],
   },

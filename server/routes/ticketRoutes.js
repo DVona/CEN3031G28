@@ -42,7 +42,8 @@ import express from "express";
 import connectDB from "../database/connection.js";
 import Ticket from "../models/ticketModel.js";
 import TicketCount from "../models/ticketCountModel.js";
-import { API_URL } from "../../client/src/config.js";
+import process from "node:process";
+const API_URL = process.env.VITE_API_URL || "http://localhost:5050";
 const router = express.Router();
 
 // Get ticket count
@@ -104,7 +105,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Create a new ticket
-router.post("/", async (req, res) => {
+router.post("/form", async (req, res) => {
   try {
     const response = await fetch(`${API_URL}/tickets/ticketCountUp`);
     if (!response.ok) {

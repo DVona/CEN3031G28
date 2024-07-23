@@ -6,7 +6,7 @@ import tickets from "./routes/ticketRoutes.js";
 import login from "./routes/login.js";
 import signup from "./routes/signup.js";
 
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT || "5050";
 const app = express();
 
 app.use(cors());
