@@ -42,7 +42,7 @@ import express from "express";
 import connectDB from "../database/connection.js";
 import Ticket from "../models/ticketModel.js";
 import TicketCount from "../models/ticketCountModel.js";
-import { API_URL } from "../../../config";
+const API_URL = process.env.VITE_API_URL;
 const router = express.Router();
 
 // Get ticket count
