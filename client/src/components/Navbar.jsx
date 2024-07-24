@@ -3,7 +3,7 @@ import { Box, Flex, Image, HStack} from "@chakra-ui/react";
 import ReactLogo from "../assets/react.svg";
 import Logout from "./Logout/Logout";
 import Create from "./CreateUser/Create";
-import TicketButton from "./Ticket/Ticket";
+import TicketButton from "./Ticket/TicketCreate";
 
 export default function Navbar() {
   return (

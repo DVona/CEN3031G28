@@ -44,7 +44,7 @@ import Ticket from "../models/ticketModel.js";
 import TicketCount from "../models/ticketCountModel.js";
 const API_URL = process.env.VITE_API_URL;
 const router = express.Router();
-
+/*
 // Get ticket count
 router.get("/ticketCount", async (req, res) => {
     try {
@@ -76,7 +76,7 @@ router.patch("/ticketCountUp", async (req, res) => {
     res.status(500).send("Error updating ticket count");
   }
 });
-
+*/
 // Get all tickets
 router.get("/all", async (req, res) => {
   try {
@@ -104,7 +104,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Create a new ticket
-router.post("/form", async (req, res) => {
+router.post("/new", async (req, res) => {
   try {
     /*
     const response = await fetch(`${API_URL}/tickets/ticketCountUp`);
@@ -118,11 +118,13 @@ router.post("/form", async (req, res) => {
     const newTicket = new Ticket({ 
       //id: ticketCounter.ticketCount,
       category: req.body.category,
-      estimate: req.body.estimate,
-      schedule: req.body.schedule,
-      assignee: req.body.assignee,
-      customer: req.body.customer,
-      active: 1,
+      estimate: 0,
+      schedule: 0,
+      assignee: 0,
+      customer: 0,
+      active: "Open",
+      chatLog: [req.body.description],
+      chatSender: [0],
     });
     
     const savedTicket = await newTicket.save();

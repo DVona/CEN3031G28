@@ -7,7 +7,8 @@ import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
 import Record from "./components/Record/Record";
 import RecordList from "./components/Record/RecordList";
-import Ticket from "./components/Ticket/TicketForm";
+import Ticket from "./components/Ticket/Ticket";
+import TicketList from "./components/Ticket/TicketList";
 import theme from "./theme";
 
 
@@ -56,6 +57,26 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/ticket/form",
+        element: <Ticket />,
+      },
+    ],
+  },
+  {
+    path: "/ticket/all",
+    element: <App />,
+    children: [
+      {
+        path: "/ticket/all",
+        element: <TicketList />,
+      },
+    ],
+  },
+  {
+    path: "/ticket/edit/:id",
+    element: <App />,
+    children: [
+      {
+        path: "/ticket/edit/:id",
         element: <Ticket />,
       },
     ],
