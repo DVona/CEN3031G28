@@ -14,7 +14,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 
-//import { API_URL } from "../../config";
+import { API_URL } from "../../config";
 
 const Ticket = (props) => (
   <Tr>
@@ -42,7 +42,7 @@ const Ticket = (props) => (
 );
 
 export default function TicketList() {
-  const API_URL="http://localhost:5050";
+  //const API_URL="http://localhost:5050";
   const [tickets, setTickets] = useState([]);
   const toast = useToast(); // Initialize useToast hook
 

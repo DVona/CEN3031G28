@@ -1,47 +1,9 @@
-/*
-this.addCustomerChatLog(description);
-}
-
-isScheduled(){
-    return this.estimate == 0;
-}
-getID(){
-    return this.id;
-}
-getCategory(){
-    return this.category;
-}
-getAsssignee(){
-    return this.assignee;
-}
-getCustomer(){
-    return this.customer;
-}
-getCompletionTime(){
-    return this.estimate + this.schedule;
-}
-setEstimate(time){
-    this.estimate = time;
-}
-setSchedule(date){
-    this.estimate = date;
-}
-getChatLog(){
-    return this.chatLog;
-}
-addCustomerChatLog(message){
-    this.chatLog.push(message);
-    this.chatSender.push(0);
-}
-addEmployeeChatLog(message){
-    this.chatLog.push(message);
-    this.chatSender.push(1);
-}
-*/
 import express from "express";
 import connectDB from "../database/connection.js";
 import Ticket from "../models/ticketModel.js";
 import TicketCount from "../models/ticketCountModel.js";
+import dotenv from "dotenv";
+dotenv.config();
 const API_URL = process.env.VITE_API_URL;
 const router = express.Router();
 /*

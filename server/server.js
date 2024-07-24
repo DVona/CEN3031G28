@@ -6,10 +6,8 @@ import records from "./routes/record.js";
 import ticket from "./routes/ticketRoutes.js";
 import login from "./routes/login.js";
 import signup from "./routes/signup.js";
-import path from "path";
-import { fileURLToPath } from 'url'
 
-dotenv.config({ path: path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../.env') });
+dotenv.config();
 
 const PORT = process.env.PORT || 5050;
 const app = express();

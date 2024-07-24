@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Box, Heading, Flex } from "@chakra-ui/react";
 import TicketForm from "./Form/TicketForm";
+import { API_URL } from "../../config";
 
 function Ticket() {
-    const API_URL="http://localhost:5050";
+    //const API_URL="http://localhost:5050";
     const [form, setForm] = useState({
       category: "",
       description: "",
