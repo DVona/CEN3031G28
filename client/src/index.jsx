@@ -7,6 +7,7 @@ import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
 import Record from "./components/Record/Record";
 import RecordList from "./components/Record/RecordList";
+import AccountPanel from "./components/Panel/AccountPanel";
 import theme from "./theme";
 
 
@@ -26,6 +27,16 @@ const router = createBrowserRouter([
       {
         path: "/records",
         element: <RecordList />,
+      },
+    ],
+  },
+  {
+    path: "/account",
+    element: <App />,
+    children: [
+      {
+        path: "/account",
+        element: <AccountPanel />,
       },
     ],
   },
