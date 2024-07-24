@@ -1,19 +1,23 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+/*TODO: 
+- revamp nav bar with auth data
+- calendar integration
+*/
 import {
   Box,
   Button,
   Heading,
   Center,
+  Grid,
+  Flex,
+  Spacer,
   Table,
   Tbody,
-  Td,
   Th,
   Thead,
   Tr,
 } from "@chakra-ui/react";
 
-import { API_URL } from "../../config";
+
 
 
 export default function AccountPanel() {
@@ -28,11 +32,17 @@ return (
       <Heading as="h3" size="lg" p={4}>
         Account Panel
       </Heading>
-      </Center>  
-      <Heading as="h3" size="md" p={4} ml="3">
+      </Center>
+      <Grid templateColumns='repeat(2, 1fr)' gap={6}>
+      <Heading as="h3" size="md" p={4} ml="2">
             Tickets
+            </Heading>
+        <Heading as="h3" size="md" p={4} float="right" maxWidth="50%">
+            Calendar
         </Heading> 
-      <Box borderWidth="1px" rounded="lg" overflow="hidden" maxWidth="50%" ml="3">
+        </Grid>
+
+      <Box borderWidth="1px" rounded="lg" overflow="hidden" maxWidth="50%" ml="3" float="left">
         <Box overflowY="auto">
           <Table size="md">
             <Thead>
@@ -46,6 +56,8 @@ return (
           </Table>
         </Box>
       </Box>
-    </Box>
+      <Box borderWidth="1px" rounded="lg" overflow="hidden" maxWidth="50%" float="right">
+        </Box>
+      </Box>
   );
 }
