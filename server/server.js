@@ -26,6 +26,6 @@ app.use("/ticket", ticket);
 
 
 // start the server
-app.listen(PORT, () => {
+app.listen(PORT, "localhost", () => {
   console.log(`Server listening on port ${PORT}`);
 });

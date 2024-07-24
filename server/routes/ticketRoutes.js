@@ -78,7 +78,7 @@ router.patch("/ticketCountUp", async (req, res) => {
 });
 
 // Get all tickets
-router.get("/", async (req, res) => {
+router.get("/all", async (req, res) => {
   try {
     const tickets = await Ticket.find();
     res.status(200).send(tickets);
