@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Box, Heading, Flex } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import RecordForm from "./Form/RecordForm";
 import { API_URL } from "../../config";
 
 export default function Record() {
   const [form, setForm] = useState({
-    username: "",
-    password: "",
-    level: "",
+    category: "",
+    details: "",
   });
   const [isNew, setIsNew] = useState(true);
   const params = useParams();
@@ -72,18 +71,16 @@ export default function Record() {
       console.error("A problem occurred adding or updating a record: ", error);
     } finally {
       setForm({ username: "", password: "", level: "" });
-      navigate("/records");
+      navigate("/ticket");
     }
   }
 
   return (
-    <Flex height="100vh" alignItems="center" justifyContent="center">
-      <Box width="50%">
-        <Heading as="h3" size="lg" p={4}>
-          Create/Update User Information
-        </Heading>
-        <RecordForm form={form} updateForm={updateForm} onSubmit={onSubmit} />
-      </Box>
-    </Flex>
+    <Box>
+      <Heading as="h3" size="lg" p={4}>
+        Create/Update User Information
+      </Heading>
+      <RecordForm form={form} updateForm={updateForm} onSubmit={onSubmit} />
+    </Box>
   );
 }

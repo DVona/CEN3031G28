@@ -105,7 +105,8 @@ export default function RecordList() {
   }
 
   return (
-    <Box>
+    <Flex height="100vh" alignItems="center" justifyContent="center">
+    <Box width="60%">
       <Heading as="h3" size="lg" p={4}>
         User Records
       </Heading>
@@ -125,5 +126,6 @@ export default function RecordList() {
         </Box>
       </Box>
     </Box>
+    </Flex>
   );
 }
