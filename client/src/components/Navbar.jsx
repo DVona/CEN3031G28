@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { Box, Flex, Image, Button } from "@chakra-ui/react";
+import { Box, Flex, Image, HStack} from "@chakra-ui/react";
 import ReactLogo from "../assets/react.svg";
+import Logout from "./Logout/Logout";
+import Create from "./CreateUser/Create";
 
 export default function Navbar() {
   return (
@@ -15,34 +17,11 @@ export default function Navbar() {
             src={ReactLogo}
           />
         </NavLink>
+        <HStack spacing={1} ml="auto">
+          <Create />
+          <Logout />
+        </HStack>
 
-        <NavLink to="/create">
-          <Button
-            as="div"
-            size="md"
-            fontWeight="medium"
-            ringOffset="background"
-            transition="all 0.2s"
-            _focus={{
-              outline: "none",
-              ring: 2,
-              ringColor: "ring",
-              ringOffset: 2,
-            }}
-            _hover={{
-              bg: "gray.500",
-            }}
-            border="1px"
-            bg="background"
-            color="text"
-            borderColor="input"
-            h={9}
-            rounded="md"
-            px={3}
-          >
-            Create User
-          </Button>
-        </NavLink>
       </Flex>
     </Box>
   );
