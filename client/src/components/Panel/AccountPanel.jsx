@@ -7,9 +7,8 @@ import {
   Button,
   Heading,
   Center,
-  Grid,
   Flex,
-  Spacer,
+  Grid,
   Table,
   Tbody,
   Th,
@@ -27,7 +26,7 @@ function ticketList() {
 }
 
 return (
-    <Box>
+    <Box height="90vh">
       <Center>
       <Heading as="h3" size="lg" p={4}>
         Account Panel
@@ -41,7 +40,7 @@ return (
             Calendar
         </Heading> 
         </Grid>
-
+      <Flex>
       <Box borderWidth="1px" rounded="lg" overflow="hidden" maxWidth="50%" ml="3" float="left">
         <Box overflowY="auto">
           <Table size="md">
@@ -56,8 +55,37 @@ return (
           </Table>
         </Box>
       </Box>
+      </Flex>
       <Box borderWidth="1px" rounded="lg" overflow="hidden" maxWidth="50%" float="right">
         </Box>
+        <Flex verticalAlign={"bottom"} minHeight={"65vh"} maxWidth="50%" position="relative">
+        <Button
+            position="absolute"
+            bottom="0"
+            type="submit"
+            colorScheme="blue"
+            width="xl"
+            size="lg"
+            ml="3"
+            mb="3"
+        >    
+            Create a Ticket
+        </Button>
+        <Button
+            position="absolute"
+            bottom="0"
+            right="0"
+            type="submit"
+            colorScheme="green"
+            width="half"
+            size="lg"
+            mb="3"
+            mr="5"
+           
+        >    
+            Chat
+        </Button>
+        </Flex>
       </Box>
   );
 }
