@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-
 import cookieParser from "cookie-parser";
 
 import connectDB from "./database/connection.js";
@@ -8,8 +7,6 @@ import records from "./routes/record.js";
 import ticket from "./routes/ticketRoutes.js";
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
-
-dotenv.config();
 
 const PORT = process.env.PORT || 5050;
 const app = express();
