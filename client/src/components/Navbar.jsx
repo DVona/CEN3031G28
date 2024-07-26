@@ -3,6 +3,7 @@ import { Box, Flex, Image, HStack} from "@chakra-ui/react";
 import ReactLogo from "../assets/react.svg";
 import Logout from "./Logout/Logout";
 import Create from "./CreateUser/Create";
+import TicketButton from "./Ticket/TicketCreate";
 
 export default function Navbar() {
   return (
@@ -18,6 +19,7 @@ export default function Navbar() {
           />
         </NavLink>
         <HStack spacing={1} ml="auto">
+          <TicketButton />
           <Create />
           <Logout />
         </HStack>

@@ -1,54 +1,40 @@
-import { Box, Button, Flex, Stack } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
-import Header from "./Header";
-import Fields from "./Fields";
+import { Box, Button, Flex, 
+  Heading, Text} from "@chakra-ui/react";
+import FormFields from "./Fields";
 
-function SignUpForm({ form, updateForm, onSubmit }) {
+function TicketForm({ form, updateForm, onSubmit}) {
   return (
-    <Flex height="100vh" alignItems="center" justifyContent="center">
-      <Box
-        as="form"
-        onSubmit={onSubmit}
-        borderWidth="1px"
-        rounded="lg"
-        p={4}
-        width="75%"
-      >
-        <Flex
-          direction="column"
-          alignItems="center"
-          borderBottomWidth="1px"
+    <Box as="form" onSubmit={onSubmit} borderWidth="1px" rounded="lg" p={4}>
+      <Flex
+        direction={{ base: "column", md: "row" }}
+        alignItems="flex-start"
+        borderBottomWidth="1px"
+        pb={12}
+        mb={4}
+      > 
+        <Flex // Form Header
+          direction={{ base: "column", md: "row" }}
+          borderColor="gray.200"
           pb={12}
           mb={4}
         >
-          <Header />
-          <Fields form={form} updateForm={updateForm} />
+          <Box mb={{ base: 4, md: 0 }}>
+            <Heading as="h2" size="md" mb={1}>
+              Help Ticket Submission
+            </Heading>
+            <Text fontSize="sm" color="gray.600">
+              We will fix your problem as soon as possible, or try and use our synchronus chat.
+            </Text>
+          </Box>
         </Flex>
-        <Stack direction="row" spacing={4}>
-          <Button
-            type="submit"
-            colorScheme="blue"
-            mt={4}
-            width="full"
-            size="lg"
-          >
-            Sign Up
-          </Button>
-          <Button
-            type="submit"
-            colorScheme="blue"
-            mt={4}
-            width="full"
-            size="lg"
-            as={Link}
-            to="/"
-          >
-            Return to Login
-          </Button>
-        </Stack>
-      </Box>
-    </Flex>
+      
+        <FormFields form={form} updateForm={updateForm} />
+      </Flex>
+      <Button type="submit" colorScheme="blue" mt={4} width="full" size="lg">
+        Submit Ticket
+      </Button>
+    </Box>
   );
 }
 
-export default SignUpForm;
+export default TicketForm;
