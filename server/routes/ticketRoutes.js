@@ -37,12 +37,12 @@ addEmployeeChatLog(message){
     this.chatLog.push(message);
     this.chatSender.push(1);
 }
-*/
+*//*
 import express from "express";
 import connectDB from "../database/connection.js";
 import Ticket from "../models/ticketModel.js";
 import TicketCount from "../models/ticketCountModel.js";
-import { API_URL } from "../../../config";
+import { API_URL } from "../../client/src/config.js";
 const router = express.Router();
 
 // Get ticket count
@@ -173,4 +173,9 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+export default router;*/
+
+import express from "express";
+
+const router = express.Router();
 export default router;
