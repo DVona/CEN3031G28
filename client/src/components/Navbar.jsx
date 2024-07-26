@@ -8,10 +8,12 @@ export default function Navbar() {
   return (
     <Box mb={6}>
       <Flex justify="space-between" align="center" as="nav">
-        <NavLink to="/records">
+        <NavLink to="/account">
           <Image
             alt="React Logo"
             h={10}
+            mt={2}
+            ml={2}
             src={ReactLogo}
           />
         </NavLink>
