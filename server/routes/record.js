@@ -1,6 +1,6 @@
 import express from "express";
 import connectDB from "../database/connection.js";
-import Record from "../models/record.js";
+import Record from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 
 const router = express.Router();

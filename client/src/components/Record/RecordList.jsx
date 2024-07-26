@@ -1,18 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Table,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-  useToast,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Table, Tbody, Td, Th, Thead, Tr, useToast } from "@chakra-ui/react";
 
 import { API_URL } from "../../config";
 
@@ -26,11 +14,7 @@ const Record = (props) => (
         <Button as={Link} to={`/edit/${props.record._id}`} size="sm">
           Edit
         </Button>
-        <Button
-          colorScheme="red"
-          size="sm"
-          onClick={() => props.deleteRecord(props.record._id)}
-        >
+        <Button colorScheme="red" size="sm" onClick={() => props.deleteRecord(props.record._id)}>
           Delete
         </Button>
       </Flex>
@@ -95,37 +79,31 @@ export default function RecordList() {
   }
 
   function recordList() {
-    return records.map((record) => (
-      <Record
-        record={record}
-        deleteRecord={() => deleteRecord(record._id)}
-        key={record._id}
-      />
-    ));
+    return records.map((record) => <Record record={record} deleteRecord={() => deleteRecord(record._id)} key={record._id} />);
   }
 
   return (
     <Flex height="100vh" alignItems="center" justifyContent="center">
-    <Box width="60%">
-      <Heading as="h3" size="lg" p={4}>
-        User Records
-      </Heading>
-      <Box borderWidth="1px" rounded="lg" overflow="hidden">
-        <Box overflowX="auto">
-          <Table size="sm">
-            <Thead>
-              <Tr>
-                <Th color="text">Username</Th>
-                <Th color="text">Password</Th>
-                <Th color="text">Level</Th>
-                <Th color="text">Action</Th>
-              </Tr>
-            </Thead>
-            <Tbody>{recordList()}</Tbody>
-          </Table>
+      <Box width="60%">
+        <Heading as="h3" size="lg" p={4}>
+          User Records
+        </Heading>
+        <Box borderWidth="1px" rounded="lg" overflow="hidden">
+          <Box overflowX="auto">
+            <Table size="sm">
+              <Thead>
+                <Tr>
+                  <Th color="text">Username</Th>
+                  <Th color="text">Password</Th>
+                  <Th color="text">Level</Th>
+                  <Th color="text">Action</Th>
+                </Tr>
+              </Thead>
+              <Tbody>{recordList()}</Tbody>
+            </Table>
+          </Box>
         </Box>
       </Box>
-    </Box>
     </Flex>
   );
 }

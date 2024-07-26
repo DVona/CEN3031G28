@@ -1,6 +1,6 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom/client";
 import { ChakraProvider } from "@chakra-ui/react";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./app";
 import Login from "./components/Login/Login";
@@ -10,8 +10,27 @@ import RecordList from "./components/Record/RecordList";
 import Ticket from "./components/Ticket/Ticket";
 import TicketList from "./components/Ticket/TicketList";
 import AccountPanel from "./components/Panel/AccountPanel";
+
 import theme from "./theme";
 
+import App from "./app.jsx";
+import { store, persistor } from "./redux/store.js";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+
+/*
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <ChakraProvider theme={theme}>
+      <PersistGate persistor={persistor}>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </PersistGate>
+    </ChakraProvider>
+  </React.StrictMode>
+);
+*/
 
 const router = createBrowserRouter([
   {

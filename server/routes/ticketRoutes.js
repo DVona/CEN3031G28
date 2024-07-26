@@ -77,7 +77,7 @@ router.post("/new", async (req, res) => {
     }
     const ticketCounter = await response.json();
     */
-    const newTicket = new Ticket({ 
+    const newTicket = new Ticket({
       //id: ticketCounter.ticketCount,
       category: req.body.category,
       estimate: 0,
@@ -88,7 +88,7 @@ router.post("/new", async (req, res) => {
       chatLog: [req.body.description],
       chatSender: [0],
     });
-    
+
     const savedTicket = await newTicket.save();
     res.status(201).send(savedTicket);
   } catch (err) {
