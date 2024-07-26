@@ -1,50 +1,12 @@
-/*
-this.addCustomerChatLog(description);
-}
-
-isScheduled(){
-    return this.estimate == 0;
-}
-getID(){
-    return this.id;
-}
-getCategory(){
-    return this.category;
-}
-getAsssignee(){
-    return this.assignee;
-}
-getCustomer(){
-    return this.customer;
-}
-getCompletionTime(){
-    return this.estimate + this.schedule;
-}
-setEstimate(time){
-    this.estimate = time;
-}
-setSchedule(date){
-    this.estimate = date;
-}
-getChatLog(){
-    return this.chatLog;
-}
-addCustomerChatLog(message){
-    this.chatLog.push(message);
-    this.chatSender.push(0);
-}
-addEmployeeChatLog(message){
-    this.chatLog.push(message);
-    this.chatSender.push(1);
-}
-*//*
 import express from "express";
 import connectDB from "../database/connection.js";
 import Ticket from "../models/ticketModel.js";
 import TicketCount from "../models/ticketCountModel.js";
-import { API_URL } from "../../client/src/config.js";
+import dotenv from "dotenv";
+dotenv.config();
+const API_URL = process.env.VITE_API_URL;
 const router = express.Router();
-
+/*
 // Get ticket count
 router.get("/ticketCount", async (req, res) => {
     try {
@@ -76,9 +38,9 @@ router.patch("/ticketCountUp", async (req, res) => {
     res.status(500).send("Error updating ticket count");
   }
 });
-
+*/
 // Get all tickets
-router.get("/", async (req, res) => {
+router.get("/all", async (req, res) => {
   try {
     const tickets = await Ticket.find();
     res.status(200).send(tickets);
@@ -104,8 +66,9 @@ router.get("/:id", async (req, res) => {
 });
 
 // Create a new ticket
-router.post("/", async (req, res) => {
+router.post("/new", async (req, res) => {
   try {
+    /*
     const response = await fetch(`${API_URL}/tickets/ticketCountUp`);
     if (!response.ok) {
       const message = `An error has occurred: ${response.statusText}`;
@@ -113,16 +76,19 @@ router.post("/", async (req, res) => {
       return;
     }
     const ticketCounter = await response.json();
-    const newTicket = new Ticket({ 
-      id: ticketCounter.ticketCount,
+    */
+    const newTicket = new Ticket({
+      //id: ticketCounter.ticketCount,
       category: req.body.category,
-      estimate: req.body.estimate,
-      schedule: req.body.schedule,
-      assignee: req.body.assignee,
-      customer: req.body.customer,
-      active: 1,
+      estimate: 0,
+      schedule: 0,
+      assignee: 0,
+      customer: 0,
+      active: "Open",
+      chatLog: [req.body.description],
+      chatSender: [0],
     });
-    
+
     const savedTicket = await newTicket.save();
     res.status(201).send(savedTicket);
   } catch (err) {
@@ -173,9 +139,4 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-export default router;*/
-
-import express from "express";
-
-const router = express.Router();
 export default router;
