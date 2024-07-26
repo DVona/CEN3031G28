@@ -1,5 +1,16 @@
 import ReactDOM from "react-dom/client";
 import { ChakraProvider } from "@chakra-ui/react";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from "./app";
+import Login from "./components/Login/Login";
+import SignUp from "./components/SignUp/SignUp";
+import Record from "./components/Record/Record";
+import RecordList from "./components/Record/RecordList";
+import Ticket from "./components/Ticket/Ticket";
+import TicketList from "./components/Ticket/TicketList";
+import AccountPanel from "./components/Panel/AccountPanel";
+
 import theme from "./theme";
 
 import App from "./app.jsx";

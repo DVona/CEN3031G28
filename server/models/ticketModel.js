@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
 const ticketSchema = new mongoose.Schema({
-  id: {
-    type: String,
-    required: true,
-  },
   category: { // "AccountHelp" "RepairRequest" "BugReport" "SecurityIssue" "Other"
     type: String,
     required: true,
@@ -31,10 +27,10 @@ const ticketSchema = new mongoose.Schema({
   chatSender: { // chatSender = 0 for employee messages and it = 1 for customer messages
     type: [Boolean],
   },
-  active: { // if the ticket is open (1) or closed (0)
-    type: Boolean,
+  active: { // if the ticket is open or closed
+    type: String,
     required: true,
-    default: 1,
+    default: "Open",
   },
 });
 

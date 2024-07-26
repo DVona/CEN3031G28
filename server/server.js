@@ -1,12 +1,15 @@
 import express from "express";
 import cors from "cors";
+
 import cookieParser from "cookie-parser";
 
 import connectDB from "./database/connection.js";
 import records from "./routes/record.js";
-import tickets from "./routes/ticketRoutes.js";
+import ticket from "./routes/ticketRoutes.js";
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
+
+dotenv.config();
 
 const PORT = process.env.PORT || 5050;
 const app = express();
@@ -15,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use("/record", records);
-app.use("/ticket", tickets);
+app.use("/ticket", ticket);
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
