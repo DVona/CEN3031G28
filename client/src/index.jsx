@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { ColorModeScript } from "@chakra-ui/color-mode";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./theme";
 
@@ -13,6 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ChakraProvider theme={theme}>
       <PersistGate persistor={persistor}>
         <Provider store={store}>
+          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <App />
         </Provider>
       </PersistGate>

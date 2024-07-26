@@ -11,6 +11,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import OnlyAdminPrivateRoute from "./components/AdminPrivateRoute";
 import OnlyEmployeePrivateRoute from "./components/EmployeePrivateRoute";
 
+
 const App = () => {
   return (
     <BrowserRouter>

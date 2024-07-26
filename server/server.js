@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import connectDB from "./database/connection.js";
 import records from "./routes/record.js";
 import ticket from "./routes/ticketRoutes.js";
+
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 
@@ -17,6 +18,7 @@ app.use(cookieParser());
 app.use("/record", records);
 app.use("/ticket", ticket);
 
+// confirmed working
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 

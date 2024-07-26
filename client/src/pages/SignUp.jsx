@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/button";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
-import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
+import { Input } from "@chakra-ui/input";
 import { VStack, HStack } from "@chakra-ui/layout";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -32,7 +32,7 @@ export default function SignIn() {
       return;
     }
 
-    if(password !== confirmPassword){
+    if (password !== confirmPassword) {
       toast({
         title: "Passwords Do Not Match",
         status: "warning",
@@ -97,7 +97,7 @@ export default function SignIn() {
           </Box>
           <FormControl id="Username" isRequired pt="4px">
             <FormLabel>Username</FormLabel>
-            <Input value={username} type="username" placeholder="Enter Your Username" onChange={(e) => setUsername(e.target.value)} />
+            <Input value={username} placeholder="Enter Your Username" onChange={(e) => setUsername(e.target.value)} />
           </FormControl>
           <FormControl id="password" isRequired>
             <FormLabel>Password</FormLabel>
