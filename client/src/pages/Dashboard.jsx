@@ -62,17 +62,17 @@ export default function Dashboard() {
 
   return (
     <Flex height="50vh" alignItems="center" justifyContent="center">
-      <Box borderWidth="1px" rounded="lg" p={5} width="40%" bg="gray.800" boxShadow="0 5px 10px 0 rgba(158, 158, 158, 0.75)">
+      <Box borderWidth="1px" rounded="lg" p={5} width="40%" boxShadow="0 5px 10px 0 rgba(158, 158, 158, 0.75)">
         <VStack spacing="20px" alignItems="center">
           <Text as="u" fontWeight="bold" fontSize="4xl">
             Your Profile
           </Text>
           <Text fontSize="3xl">Idk maybe add support for a user image this profile info feels very lackluster</Text>
           <FormControl id="Username" pt="4px" width="100%">
-            <Input bg="gray.900" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
+            <Input  value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
           </FormControl>
           <FormControl id="Password" pt="4px">
-            <Input bg="gray.900" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+            <Input  value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
           </FormControl>
           <Box w="100%" textAlign="left">
             <Text>Your Role: {currentUser.role}</Text>

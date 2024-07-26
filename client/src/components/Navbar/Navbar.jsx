@@ -4,7 +4,7 @@ import { Box, Flex, Button, Stack, useToast } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import { signoutSuccess } from "../../redux/user/userSlice";
 
-import Logo from "./Logo";
+import ToggleColorMode from "./ToggleColorMode";
 import MenuItem from "./MenuItem";
 import axios from "axios";
 
@@ -17,7 +17,7 @@ const NavBar = (props) => {
 
   return (
     <NavBarContainer {...props}>
-      <Logo w="100px" color="white" />
+      <ToggleColorMode />
       <MenuLinks />
     </NavBarContainer>
   );
@@ -64,7 +64,7 @@ const MenuLinks = () => {
           <>
             <MenuItem onClick={handleSignout}>Sign Out</MenuItem>
             <MenuItem to="/sign-up-admin" isLast>
-              <Button size="sm" rounded="md" color="black" bg="white">
+              <Button size="sm" rounded="md">
                 Create Account
               </Button>
             </MenuItem>
@@ -83,7 +83,7 @@ const MenuLinks = () => {
 
 const NavBarContainer = ({ children, ...props }) => {
   return (
-    <Flex align="center" justify="space-between" wrap="wrap" w="100%" mb={8} p={8} {...props}>
+    <Flex align="center" justify="space-between" wrap="wrap" w="100%" mb="8" pl="8" pr="8" {...props} borderBottom="1px">
       {children}
     </Flex>
   );
