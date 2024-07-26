@@ -34,7 +34,7 @@ export default function Login() {
 
       const data = await response.json();
       console.log("Login successful:", data);
-      navigate("/records"); // Redirect after successful login
+      navigate("/account"); // Redirect after successful login
     } catch (error) {
       console.error("Login failed:", error);
     }
