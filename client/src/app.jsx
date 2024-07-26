@@ -10,7 +10,6 @@ import Users from "./pages/AdminUsers";
 import PrivateRoute from "./components/PrivateRoute";
 import OnlyAdminPrivateRoute from "./components/AdminPrivateRoute";
 import OnlyEmployeePrivateRoute from "./components/EmployeePrivateRoute";
-import ScrollToTop from "./components/ScrollTop";
 
 const App = () => {
   return (
