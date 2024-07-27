@@ -76,7 +76,7 @@ export default function Tickets() {
       <Box borderWidth="1px" rounded="lg" p={5} width="55%" boxShadow="0 5px 10px 0 rgba(158, 158, 158, 0.75)">
         <VStack spacing="20px" alignItems="flex-start">
           <Box borderBottomWidth="1px">
-            <Heading>Fill Out a Ticket</Heading>
+            <Heading>Create a Ticket</Heading>
             <Text fontSize="sm" color="gray.500">
               Please fill out all fields to submit a ticket
             </Text>
