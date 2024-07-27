@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/Navbar";
 import AdminSignUp from "./pages/AdminSignUp";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
@@ -10,7 +10,6 @@ import Users from "./pages/AdminUsers";
 import PrivateRoute from "./components/PrivateRoute";
 import OnlyAdminPrivateRoute from "./components/AdminPrivateRoute";
 import OnlyEmployeePrivateRoute from "./components/EmployeePrivateRoute";
-
 
 const App = () => {
   return (
