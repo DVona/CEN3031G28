@@ -61,7 +61,7 @@ export default function Dashboard() {
   };
 
   return (
-    <Flex height="50vh" alignItems="center" justifyContent="center">
+    <Flex height="100vh" alignItems="center" justifyContent="center">
       <Box borderWidth="1px" rounded="lg" p={5} width="40%" boxShadow="0 5px 10px 0 rgba(158, 158, 158, 0.75)">
         <VStack spacing="20px" alignItems="center">
           <Text as="u" fontWeight="bold" fontSize="4xl">
