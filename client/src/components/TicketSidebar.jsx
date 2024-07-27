@@ -34,7 +34,7 @@ const MenuLinks = () => {
 
   return (
     <Box>
-      <VStack align="left" spacing={4} whiteSpace="nowrap" width="10vw">
+      <VStack align="left" spacing={4} whiteSpace="nowrap" width="200px">
         <MenuItem to="/tickets?tab=create">
           <Button size="md" w="100%" justifyContent="flex-start" variant={tab === "create" ? "solid" : "ghost"}>
             Create Ticket
