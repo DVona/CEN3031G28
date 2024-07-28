@@ -59,7 +59,7 @@ const MenuLinks = () => {
         <MenuItem to="/dashboard">Home</MenuItem>
         <MenuItem to="/tickets?tab=create">Tickets</MenuItem>
         {isAdmin && <MenuItem to="/users">Users</MenuItem>}
-        {isEmployee && <MenuItem to="/calendar">Calendar</MenuItem>}
+        {(isEmployee || isAdmin) && <MenuItem to="/calendar">Calendar</MenuItem>}
         {isAdmin ? (
           <>
             <MenuItem onClick={handleSignout}>Sign Out</MenuItem>
