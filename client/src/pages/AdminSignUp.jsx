@@ -74,7 +74,7 @@ export default function AdminSignUp() {
 
   return (
     <Flex height="100vh" alignItems="center" justifyContent="center">
-      <Box borderWidth="1px" rounded="lg" p={5} width="55%" boxShadow="0 5px 10px 0 rgba(158, 158, 158, 0.75)">
+      <Box borderWidth="1px" rounded="lg" p={5} width="40%" boxShadow="0 5px 10px 0 rgba(158, 158, 158, 0.75)">
         <VStack spacing="20px" alignItems="flex-start">
           <Box borderBottomWidth="1px">
             <Heading>Create an Account</Heading>

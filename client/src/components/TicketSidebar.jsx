@@ -20,6 +20,7 @@ const MenuLinks = () => {
   const dispatch = useDispatch();
   const toast = useToast();
   const isEmployee = currentUser?.role === "Employee";
+  const isAdmin = currentUser?.role === "Admin";
 
   const location = useLocation();
   const [tab, setTab] = useState("");
@@ -40,9 +41,9 @@ const MenuLinks = () => {
             Create Ticket
           </Button>
         </MenuItem>
-        <MenuItem to="/tickets?tab=active">
-          <Button size="md" w="100%" justifyContent="flex-start" variant={tab === "active" ? "solid" : "ghost"}>
-            Active Tickets
+        <MenuItem to="/tickets?tab=open">
+          <Button size="md" w="100%" justifyContent="flex-start" variant={tab === "open" ? "solid" : "ghost"}>
+            Open Tickets
           </Button>
         </MenuItem>
         <MenuItem to="/tickets?tab=closed">

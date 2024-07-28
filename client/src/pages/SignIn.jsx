@@ -82,14 +82,14 @@ export default function SignIn() {
               Please enter your username and password to login.
             </Text>
           </Box>
-          <FormControl id="Username" isRequired pt="4px">
+          <FormControl id="Username" isRequired>
             <FormLabel>Username</FormLabel>
-            <Input value={username} type="username" placeholder="Enter Your Username" onChange={(e) => setUsername(e.target.value)} />
+            <Input value={username} placeholder="Enter Username" onChange={(e) => setUsername(e.target.value)} />
           </FormControl>
           <FormControl id="password" isRequired>
             <FormLabel>Password</FormLabel>
             <InputGroup size="md">
-              <Input value={password} onChange={(e) => setPassword(e.target.value)} type={show ? "text" : "password"} placeholder="Enter password" />
+              <Input value={password} placeholder="Enter Password"  onChange={(e) => setPassword(e.target.value)} type={show ? "text" : "password"} />
               <InputRightElement width="4.5rem">
                 <Button h="1.75rem" size="sm" onClick={handleClick}>
                   {show ? "Hide" : "Show"}
