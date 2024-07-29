@@ -27,7 +27,7 @@ export default function SignIn() {
       toast({
         title: "Please Fill all the Feilds",
         status: "warning",
-        duration: 2000,
+        duration: 1000,
         isClosable: true,
         position: "bottom",
       });
@@ -50,7 +50,7 @@ export default function SignIn() {
         toast({
           title: "Login Successful",
           status: "success",
-          duration: 5000,
+          duration: 2000,
           isClosable: true,
           position: "bottom",
         });

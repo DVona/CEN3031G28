@@ -7,7 +7,7 @@ import { Box, Flex } from "@chakra-ui/react";
 export default function EmployeeCalendar() {
   return (
     <Flex alignItems="center" justifyContent="center">
-      <Box width="60%">
+      <Box width="60%" mt="10">
         <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin]}
           initialView="dayGridMonth"

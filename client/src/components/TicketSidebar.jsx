@@ -33,41 +33,39 @@ const MenuLinks = () => {
   }, [location.search]);
 
   return (
-    <Flex height = "90vh">
-      <Box>
-        <VStack align="left" spacing={4} whiteSpace="nowrap" width="200px">
-          <MenuItem to="/tickets?tab=create">
-            <Button size="md" w="100%" justifyContent="flex-start" variant={tab === "create" ? "solid" : "ghost"}>
-              Create Ticket
+    <Box>
+      <VStack align="left" spacing={4} whiteSpace="nowrap" width="200px">
+        <MenuItem to="/tickets?tab=create">
+          <Button size="md" w="100%" justifyContent="flex-start" variant={tab === "create" ? "solid" : "ghost"}>
+            Create Ticket
+          </Button>
+        </MenuItem>
+        {isAdmin && (
+          <MenuItem to="/tickets?tab=tickets">
+            <Button size="md" w="100%" justifyContent="flex-start" variant={tab === "tickets" ? "solid" : "ghost"}>
+              View All Tickets
             </Button>
           </MenuItem>
-          {isAdmin && (
-            <MenuItem to="/tickets?tab=tickets">
-              <Button size="md" w="100%" justifyContent="flex-start" variant={tab === "tickets" ? "solid" : "ghost"}>
-                View All Tickets
-              </Button>
-            </MenuItem>
-          )}
-          {(isEmployee || isAdmin) && (
-            <MenuItem to="/tickets?tab=triage">
-              <Button size="md" w="100%" justifyContent="flex-start" variant={tab === "triage" ? "solid" : "ghost"}>
-                Tickets in Triage
-              </Button>
-            </MenuItem>
-          )}
-          <MenuItem to="/tickets?tab=open">
-            <Button size="md" w="100%" justifyContent="flex-start" variant={tab === "open" ? "solid" : "ghost"}>
-              Open Tickets
+        )}
+        {(isEmployee || isAdmin) && (
+          <MenuItem to="/tickets?tab=triage">
+            <Button size="md" w="100%" justifyContent="flex-start" variant={tab === "triage" ? "solid" : "ghost"}>
+              Tickets in Triage
             </Button>
           </MenuItem>
-          <MenuItem to="/tickets?tab=closed">
-            <Button size="md" w="100%" justifyContent="flex-start" variant={tab === "closed" ? "solid" : "ghost"}>
-              Closed Tickets
-            </Button>
-          </MenuItem>
-        </VStack>
-      </Box>
-    </Flex>
+        )}
+        <MenuItem to="/tickets?tab=open">
+          <Button size="md" w="100%" justifyContent="flex-start" variant={tab === "open" ? "solid" : "ghost"}>
+            Open Tickets
+          </Button>
+        </MenuItem>
+        <MenuItem to="/tickets?tab=closed">
+          <Button size="md" w="100%" justifyContent="flex-start" variant={tab === "closed" ? "solid" : "ghost"}>
+            Closed Tickets
+          </Button>
+        </MenuItem>
+      </VStack>
+    </Box>
   );
 };
 
