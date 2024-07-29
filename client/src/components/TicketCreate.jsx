@@ -72,7 +72,7 @@ export default function CreateTicket() {
   };
 
   return (
-      <Flex width="100%" alignItems="center" justifyContent="center">
+      <Flex height = "90vh" width="100%" alignItems="center" justifyContent="center">
         <Box borderWidth="1px" rounded="lg" p={5} width="55%" boxShadow="0 5px 10px 0 rgba(158, 158, 158, 0.75)">
           <VStack spacing="20px" alignItems="flex-start">
             <Box borderBottomWidth="1px">
