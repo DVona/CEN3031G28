@@ -1,21 +1,21 @@
 import { extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
-  colors: {
-    background: "#121212", // Dark background color
-    text: "#ffffff", // White text color
-    // Add more colors as needed for your specific theme
-  },
-  fonts: {
-    body: "Roboto, sans-serif", // Replace with your preferred font
-    heading: "Roboto, sans-serif", // Replace with your preferred font
+  config: {
+    intialColorMode: "dark",
+    useSystemColorMode: true,
   },
   styles: {
     global: {
       body: {
-        bg: "background",
-        color: "text",
-        opacity: "87%",
+        margin: 0,
+        "font-family": "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif",
+        "-webkit-font-smoothing": "antialiased",
+        "-moz-osx-font-smoothing": "grayscale",
+      },
+
+      code: {
+        "font-family": "source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace",
       },
     },
   },

@@ -4,7 +4,13 @@ import FormFields from "./Fields";
 
 function RecordForm({ form, updateForm, onSubmit }) {
   return (
-    <Box as="form" onSubmit={onSubmit} borderWidth="1px" rounded="lg" p={4}>
+    <Box
+      as="form"
+      onSubmit={onSubmit}
+      borderWidth="1px"
+      rounded="lg"
+      p={4}
+    >
       <Flex
         direction={{ base: "column", md: "row" }}
         alignItems="flex-start"
@@ -19,6 +25,7 @@ function RecordForm({ form, updateForm, onSubmit }) {
         Save User Record
       </Button>
     </Box>
+  
   );
 }
 
