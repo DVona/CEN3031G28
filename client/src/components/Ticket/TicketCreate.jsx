@@ -5,7 +5,7 @@ function TicketButton() {
   const navigate = useNavigate();
 
   const handleCreate = () => {
-
+    
     navigate("/ticket/form");
   };
 

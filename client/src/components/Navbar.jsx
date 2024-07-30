@@ -71,7 +71,7 @@ const MenuLinks = () => {
           </>
         ) : (
           <MenuItem>
-            <Button size="sm" rounded="md" color="black" bg="white" onClick={handleSignout}>
+            <Button colorScheme="blue" onClick={handleSignout}>
               Sign Out
             </Button>
           </MenuItem>
