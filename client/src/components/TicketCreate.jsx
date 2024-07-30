@@ -2,26 +2,23 @@ import { Button } from "@chakra-ui/button";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { VStack } from "@chakra-ui/layout";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useToast, Box, Flex, Heading, Text, Textarea, Select } from "@chakra-ui/react";
 
 import axios from "axios";
-import SideBar from "../components/TicketSidebar";
 
 export default function CreateTicket() {
   const toast = useToast();
-  const navigate = useNavigate();
-  const [selectedOption, setSelectedOption] = useState("");
+  const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // submission in progress (api route not implemented)
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log([selectedOption, description]);
+    
+    //console.log([category, description]);
 
     setLoading(true);
-    if (!selectedOption || !description) {
+    if (!category || !description) {
       toast({
         title: "Please Fill all the Feilds",
         status: "warning",
@@ -40,9 +37,9 @@ export default function CreateTicket() {
           "Content-type": "application/json",
         },
       };
-      const res = await axios.post(`/api/user/ticket/${currentUser._id}`, { selectedOption, description }, config);
-
+      const res = await axios.post('/api/ticket/create', { category, description }, config);
       const data = res.data;
+      
       if (data.success === false) {
         // error message?
         setLoading(false);
@@ -55,7 +52,8 @@ export default function CreateTicket() {
           position: "bottom",
         });
 
-        //dispatch(ticketSubmitSuccess(data));
+        //dispatch(ticketSubmitSuccess(data)); if i get around to it
+        setLoading(false);
       }
     } catch (error) {
       toast({
@@ -83,7 +81,7 @@ export default function CreateTicket() {
             </Box>
             <FormControl id="Username" isRequired pt="4px">
               <FormLabel>Category</FormLabel>
-              <Select placeholder="Please Select an Option" onChange={(e) => setSelectedOption(e.target.value)}>
+              <Select placeholder="Please Select an Option" onChange={(e) => setCategory(e.target.value)}>
                 {/*
               {/*way to add the placeholder without making it an options (will throw error warning into console (can ignore))}
               <option selected hidden disabled value="">
