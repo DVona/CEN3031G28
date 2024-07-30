@@ -67,7 +67,6 @@ export default function Dashboard() {
           <Text as="u" fontWeight="bold" fontSize="4xl">
             {currentUser.username}'s Profile
           </Text>
-          <Text fontSize="3xl">Idk maybe add support for a user image this profile info feels very lackluster</Text>
           <FormControl id="Username" pt="4px" width="100%">
             <Input  value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
           </FormControl>

@@ -64,7 +64,7 @@ const MenuLinks = () => {
           <>
             <MenuItem onClick={handleSignout}>Sign Out</MenuItem>
             <MenuItem to="/sign-up-admin" isLast>
-              <Button size="sm" rounded="md">
+              <Button colorScheme="blue" size="sm" rounded="md">
                 Create Account
               </Button>
             </MenuItem>

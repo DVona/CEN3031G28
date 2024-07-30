@@ -17,7 +17,8 @@ export default function EmployeeCalendar() {
             end: "dayGridMonth,dayGridWeek,timeGridDay",
           }}
           height="80vh"
-          events={[{ title: "Ticket #1", start: "2024-07-21T11:30:00", end: "2024-07-21T13:00:00", allDay: false }]}
+          // TODO: implement onClick -> ticket URL
+          events={[{ title: "Ticket #1", start: "2024-07-30T11:30:00", end: "2024-07-30T13:00:00", allDay: false , url: "https://google.com"}]}
         /> 
       </Box>
     </Flex>
