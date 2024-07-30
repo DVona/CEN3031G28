@@ -61,11 +61,11 @@ export default function Dashboard() {
   };
 
   return (
-    <Flex height="50vh" alignItems="center" justifyContent="center">
+    <Flex height="100vh" alignItems="center" justifyContent="center">
       <Box borderWidth="1px" rounded="lg" p={5} width="40%" boxShadow="0 5px 10px 0 rgba(158, 158, 158, 0.75)">
         <VStack spacing="20px" alignItems="center">
           <Text as="u" fontWeight="bold" fontSize="4xl">
-            Your Profile
+            {currentUser.username}'s Profile
           </Text>
           <Text fontSize="3xl">Idk maybe add support for a user image this profile info feels very lackluster</Text>
           <FormControl id="Username" pt="4px" width="100%">

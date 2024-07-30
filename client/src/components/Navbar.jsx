@@ -2,10 +2,10 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { Box, Flex, Button, Stack, useToast } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
-import { signoutSuccess } from "../../redux/user/userSlice";
+import { signoutSuccess } from "../redux/user/userSlice";
 
 import ToggleColorMode from "./ToggleColorMode";
-import MenuItem from "./MenuItem";
+import MenuItem from "./MenuItemsForBars";
 import axios from "axios";
 
 const NavBar = (props) => {
@@ -57,9 +57,9 @@ const MenuLinks = () => {
     <Box>
       <Stack spacing={8} align="center" justify="center" direction="row" pt="0">
         <MenuItem to="/dashboard">Home</MenuItem>
-        <MenuItem to="/tickets">Tickets</MenuItem>
+        <MenuItem to="/tickets?tab=create">Tickets</MenuItem>
         {isAdmin && <MenuItem to="/users">Users</MenuItem>}
-        {isEmployee && <MenuItem to="/calendar">Calendar</MenuItem>}
+        {(isEmployee || isAdmin) && <MenuItem to="/calendar">Calendar</MenuItem>}
         {isAdmin ? (
           <>
             <MenuItem onClick={handleSignout}>Sign Out</MenuItem>
@@ -83,7 +83,7 @@ const MenuLinks = () => {
 
 const NavBarContainer = ({ children, ...props }) => {
   return (
-    <Flex align="center" justify="space-between" wrap="wrap" w="100%" mb="8" pl="8" pr="8" {...props} borderBottom="1px">
+    <Flex align="center" justify="space-between" wrap="wrap" w="100%" pl="8" pr="8" {...props} borderBottom="1px">
       {children}
     </Flex>
   );

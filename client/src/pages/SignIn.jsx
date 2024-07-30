@@ -27,7 +27,7 @@ export default function SignIn() {
       toast({
         title: "Please Fill all the Feilds",
         status: "warning",
-        duration: 2000,
+        duration: 1000,
         isClosable: true,
         position: "bottom",
       });
@@ -50,7 +50,7 @@ export default function SignIn() {
         toast({
           title: "Login Successful",
           status: "success",
-          duration: 5000,
+          duration: 2000,
           isClosable: true,
           position: "bottom",
         });
@@ -74,7 +74,7 @@ export default function SignIn() {
 
   return (
     <Flex height="100vh" alignItems="center" justifyContent="center">
-      <Box borderWidth="1px" rounded="lg" p={5} width="55%" boxShadow="0 5px 10px 0 rgba(158, 158, 158, 0.75)">
+      <Box borderWidth="1px" rounded="lg" p={5} width="40%" boxShadow="0 5px 10px 0 rgba(158, 158, 158, 0.75)">
         <VStack spacing="20px" alignItems="flex-start">
           <Box borderBottomWidth="1px">
             <Heading>Sign Into Account</Heading>
@@ -82,14 +82,14 @@ export default function SignIn() {
               Please enter your username and password to login.
             </Text>
           </Box>
-          <FormControl id="Username" isRequired pt="4px">
+          <FormControl id="Username" isRequired>
             <FormLabel>Username</FormLabel>
-            <Input value={username} type="username" placeholder="Enter Your Username" onChange={(e) => setUsername(e.target.value)} />
+            <Input value={username} placeholder="Enter Username" onChange={(e) => setUsername(e.target.value)} />
           </FormControl>
           <FormControl id="password" isRequired>
             <FormLabel>Password</FormLabel>
             <InputGroup size="md">
-              <Input value={password} onChange={(e) => setPassword(e.target.value)} type={show ? "text" : "password"} placeholder="Enter password" />
+              <Input value={password} placeholder="Enter Password"  onChange={(e) => setPassword(e.target.value)} type={show ? "text" : "password"} />
               <InputRightElement width="4.5rem">
                 <Button h="1.75rem" size="sm" onClick={handleClick}>
                   {show ? "Hide" : "Show"}
