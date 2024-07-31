@@ -61,15 +61,26 @@ export default function Dashboard() {
     }
   };
 
-  const onIconChange = (e) => {
+  const onIconChange = async (e) => {
     console.log(e.target.files[0]);
     setImage(e.target.files[0]);
   };
 
-  const submitIcon = (e) => {
+  const submitIcon = async (e) => {
+    if(!image) {
+      toast({
+        title: "Please upload a profile picture",
+        status: "warning",
+        duration: 2000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", image);
+    const res = await axios.put(`/api/user/upload-image/${currentUser._id}`, { formData }, config);
   }
 
   return (

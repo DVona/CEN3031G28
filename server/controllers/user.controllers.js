@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import { errorhandler } from "../utils/error.js";
+import {multer} from "multer";
 import User from "../models/user.model.js";
 
 // function handing updating user info
@@ -102,4 +103,9 @@ export const getUsers = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+};
+
+export const uploadIcon = async (req, res) => {
+  console.log(req.body);
+  res.send("Uploaded.")
 };
