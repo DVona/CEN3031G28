@@ -66,6 +66,12 @@ export default function Dashboard() {
     setImage(e.target.files[0]);
   };
 
+  const submitIcon = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("image", image);
+  }
+
   return (
     <Flex height="100vh" alignItems="center" justifyContent="center">
       <Box borderWidth="1px" rounded="lg" p={5} width="40%" boxShadow="0 5px 10px 0 rgba(158, 158, 158, 0.75)">
@@ -76,8 +82,8 @@ export default function Dashboard() {
           <Box boxShadow='base' p='16' rounded='md' bg='currentColor'>
           </Box>
           <HStack spacing="20px">
-          <Input size='md' type='file' onChange={onIconChange} />
-          <Button >
+          <Input size='md' type='file' accept="image/*" onChange={onIconChange} />
+          <Button onClick={submitIcon}>
             Upload
           </Button>
           </HStack>
