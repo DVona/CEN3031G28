@@ -8,6 +8,6 @@ router.put("/update/:userId", verifyToken, updateUser);
 router.post("/signout", signout);
 router.delete("/delete/:userId", verifyToken, deleteUser);
 router.get("/getusers", verifyToken, getUsers);
-router.post("/upload-image/:userId", verifyToken, uploadIcon)
+router.put("/upload-image/:userId", verifyToken, uploadIcon)
 
 export default router;

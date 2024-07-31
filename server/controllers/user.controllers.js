@@ -105,7 +105,33 @@ export const getUsers = async (req, res, next) => {
   }
 };
 
-export const uploadIcon = async (req, res) => {
+export const uploadIcon = async (req, res, next) => {
+
+  const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now();
+    cb(null, uniqueSuffix);
+  },
+  });
+  const upload = multer({storage: storage});
   console.log(req.body);
-  res.send("Uploaded.")
+  const fileName = req.file.filename;
+  try {
+    await User.findByIdAndUpdate(
+      req.params.userId,
+        {
+          $set: {
+            image: req.file.fileName,
+          },
+        },
+        { new: true }
+    );
+    const { image, ...rest } = updatedUser._doc;
+    res.status(200).json(rest);
+  } catch(error) {
+    next(error);
+  }
 };

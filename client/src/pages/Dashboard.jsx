@@ -67,6 +67,7 @@ export default function Dashboard() {
   };
 
   const submitIcon = async (e) => {
+    e.preventDefault();
     if(!image) {
       toast({
         title: "Please upload a profile picture",
@@ -77,11 +78,44 @@ export default function Dashboard() {
       });
       return;
     }
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("image", image);
-    const res = await axios.put(`/api/user/upload-image/${currentUser._id}`, { formData }, config);
+    try {
+      dispatch(updateStart());
+      const formData = new FormData();
+      formData.append("image", image);
+      const config = {
+        headers: {
+          "Content-type": "multipart/form-data",
+        },
+      };
+      const res = await axios.put(`/api/user/upload-image/${currentUser._id}`, { formData }, config);
+      const data = res.data;
+      if (data.success === false) {
+        dispatch(updateFailure(data.message));
+      } else {
+        toast({
+          title: "Updated Profile Picture",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+
+        dispatch(updateSuccess(data));
+    }
   }
+    catch (error) {
+      toast({
+        title: "Error Occured!",
+        description: error.response.data.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      dispatch(updateFailure(error.message));
+    }
+  };
+
 
   return (
     <Flex height="100vh" alignItems="center" justifyContent="center">
