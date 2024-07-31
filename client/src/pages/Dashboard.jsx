@@ -1,4 +1,4 @@
-import { Flex, Box, VStack, Text, Input, FormControl, Button, useToast } from "@chakra-ui/react";
+import { Flex, Box, VStack, HStack, Text, Icon, Input, FormControl, Button, useToast } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import axios from "axios";
@@ -9,6 +9,7 @@ export default function Dashboard() {
   const { currentUser } = useSelector((state) => state.user);
   const [username, setUsername] = useState(currentUser.username || "");
   const [password, setPassword] = useState("");
+  const [image, setImage] = useState();
   const dispatch = useDispatch();
   const toast = useToast();
 
@@ -60,6 +61,11 @@ export default function Dashboard() {
     }
   };
 
+  const onIconChange = (e) => {
+    console.log(e.target.files[0]);
+    setImage(e.target.files[0]);
+  };
+
   return (
     <Flex height="100vh" alignItems="center" justifyContent="center">
       <Box borderWidth="1px" rounded="lg" p={5} width="40%" boxShadow="0 5px 10px 0 rgba(158, 158, 158, 0.75)">
@@ -67,8 +73,16 @@ export default function Dashboard() {
           <Text as="u" fontWeight="bold" fontSize="4xl">
             {currentUser.username}'s Profile
           </Text>
+          <Box boxShadow='base' p='16' rounded='md' bg='currentColor'>
+          </Box>
+          <HStack spacing="20px">
+          <Input size='md' type='file' onChange={onIconChange} />
+          <Button >
+            Upload
+          </Button>
+          </HStack>
           <FormControl id="Username" pt="4px" width="100%">
-            <Input  value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
+          <Input  value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
           </FormControl>
           <FormControl id="Password" pt="4px">
             <Input  value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
@@ -84,3 +98,4 @@ export default function Dashboard() {
     </Flex>
   );
 }
+
