@@ -9,11 +9,13 @@ export const create = async (req, res, next) => {
   if (!req.body.category || !req.body.description) {
     return next(errorhandler(400, "Please provide all required fields"));
   }
+  console.log(req.user);
 
   const newTicket = new Ticket({
     category: req.body.category,
     description: req.body.description,
-    userId: req.user.id,
+    creatorId: req.user.id,
+    creatorUsername: req.body.username,
   });
 
   try {
@@ -21,6 +23,18 @@ export const create = async (req, res, next) => {
     res.status(201).json(savedTicket);
   } catch (error) {
     console.log("error");
+    next(error);
+  }
+};
+
+export const deleteTicket = async (req, res, next) => {
+  if (!req.user.role === "Admin") {
+    return next(errorhandler(403, "You are not allowed to delete this Ticket"));
+  }
+  try {
+    await Ticket.findByIdAndDelete(req.params.ticketId);
+    res.status(200).json("Ticket has been deleted");
+  } catch (error) {
     next(error);
   }
 };
