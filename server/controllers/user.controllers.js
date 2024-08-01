@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import { errorhandler } from "../utils/error.js";
+import multer from "multer";
 import User from "../models/user.model.js";
 
 // function handing updating user info
@@ -103,3 +104,24 @@ export const getUsers = async (req, res, next) => {
     next(error);
   }
 };
+
+export const uploadIcon = async (req, res, next) => {
+  console.log(req.body);
+  const fileName = req.file.filename;
+  try {
+    await User.findByIdAndUpdate(
+      req.params.userId,
+        {
+          $set: {
+            image: req.file.fileName,
+          },
+        },
+        { new: true }
+    );
+    const { image, ...rest } = updatedUser._doc;
+    res.status(200).json(rest);
+  } catch(error) {
+    next(error);
+  }
+};
+

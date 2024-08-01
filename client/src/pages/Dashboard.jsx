@@ -1,6 +1,7 @@
 import { Flex, Box, VStack, HStack, Text, Icon, Input, FormControl, Button, useToast } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
+
 import axios from "axios";
 
 import { updateStart, updateSuccess, updateFailure } from "../redux/user/userSlice";
@@ -61,16 +62,60 @@ export default function Dashboard() {
     }
   };
 
-  const onIconChange = (e) => {
+  const onIconChange = async (e) => {
     console.log(e.target.files[0]);
     setImage(e.target.files[0]);
   };
 
-  const submitIcon = (e) => {
+  const submitIcon = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("image", image);
+    if(!image) {
+      toast({
+        title: "Please upload a profile picture",
+        status: "warning",
+        duration: 2000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+    try {
+      dispatch(updateStart());
+      const formData = new FormData();
+      formData.append("image", image);
+      const config = {
+        headers: {
+          "Content-type": "multipart/form-data",
+        },
+      };
+      const res = await axios.put(`/api/user/upload-image/${currentUser._id}`, formData);
+      const data = res.data;
+      if (data.success === false) {
+        dispatch(updateFailure(data.message));
+      } else {
+        toast({
+          title: "Updated Profile Picture",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+
+        dispatch(updateSuccess(data));
+    }
   }
+    catch (error) {
+      toast({
+        title: "Error Occured!",
+        description: error.response.data.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      dispatch(updateFailure(error.message));
+    }
+  };
 
   return (
     <Flex height="100vh" alignItems="center" justifyContent="center">
