@@ -3,18 +3,21 @@ import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { VStack } from "@chakra-ui/layout";
 import { useState } from "react";
 import { useToast, Box, Flex, Heading, Text, Textarea, Select } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 
 import axios from "axios";
 
 export default function CreateTicket() {
   const toast = useToast();
+  const { currentUser } = useSelector((state) => state.user);
+  const [username] = useState(currentUser.username || "");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    
+
     //console.log([category, description]);
 
     setLoading(true);
@@ -37,9 +40,9 @@ export default function CreateTicket() {
           "Content-type": "application/json",
         },
       };
-      const res = await axios.post('/api/ticket/create', { category, description }, config);
+      const res = await axios.post("/api/ticket/create", { category, description, username }, config);
       const data = res.data;
-      
+
       if (data.success === false) {
         // error message?
         setLoading(false);
@@ -70,40 +73,40 @@ export default function CreateTicket() {
   };
 
   return (
-      <Flex height = "90vh" width="100%" alignItems="center" justifyContent="center">
-        <Box borderWidth="1px" rounded="lg" p={5} width="55%" boxShadow="0 5px 10px 0 rgba(158, 158, 158, 0.75)">
-          <VStack spacing="20px" alignItems="flex-start">
-            <Box borderBottomWidth="1px">
-              <Heading>Create a Ticket</Heading>
-              <Text fontSize="sm" color="gray.500">
-                Please fill out all fields to submit a ticket
-              </Text>
-            </Box>
-            <FormControl id="Username" isRequired pt="4px">
-              <FormLabel>Category</FormLabel>
-              <Select placeholder="Please Select an Option" onChange={(e) => setCategory(e.target.value)}>
-                {/*
+    <Flex height="90vh" width="100%" alignItems="center" justifyContent="center">
+      <Box borderWidth="1px" rounded="lg" p={5} width="55%" boxShadow="0 5px 10px 0 rgba(158, 158, 158, 0.75)">
+        <VStack spacing="20px" alignItems="flex-start">
+          <Box borderBottomWidth="1px">
+            <Heading>Create a Ticket</Heading>
+            <Text fontSize="sm" color="gray.500">
+              Please fill out all fields to submit a ticket
+            </Text>
+          </Box>
+          <FormControl id="Username" isRequired pt="4px">
+            <FormLabel>Category</FormLabel>
+            <Select placeholder="Please Select an Option" onChange={(e) => setCategory(e.target.value)}>
+              {/*
               {/*way to add the placeholder without making it an options (will throw error warning into console (can ignore))}
               <option selected hidden disabled value="">
                 Placeholder
               </option>
               */}
-                <option value="Account Help">Account Help</option>
-                <option value="Repair Request">Repair Request</option>
-                <option value="Bug Report">Bug Report</option>
-                <option value="Security ">Security Issue</option>
-                <option value="Other">Other</option>
-              </Select>
-            </FormControl>
-            <FormControl id="Description" isRequired>
-              <FormLabel>Description</FormLabel>
-              <Textarea height="20vh" width="100%" resize="none" placeholder="Please describe your issue" onChange={(e) => setDescription(e.target.value)} />
-            </FormControl>
-            <Button colorScheme="blue" mt={2} width="full" size="md" onClick={submitHandler} isLoading={loading}>
-              Submit
-            </Button>
-          </VStack>
-        </Box>
-      </Flex>
+              <option value="Account Help">Account Help</option>
+              <option value="Repair Request">Repair Request</option>
+              <option value="Bug Report">Bug Report</option>
+              <option value="Security ">Security Issue</option>
+              <option value="Other">Other</option>
+            </Select>
+          </FormControl>
+          <FormControl id="Description" isRequired>
+            <FormLabel>Description</FormLabel>
+            <Textarea height="20vh" width="100%" resize="none" placeholder="Please describe your issue" onChange={(e) => setDescription(e.target.value)} />
+          </FormControl>
+          <Button colorScheme="blue" mt={2} width="full" size="md" onClick={submitHandler} isLoading={loading}>
+            Submit
+          </Button>
+        </VStack>
+      </Box>
+    </Flex>
   );
 }

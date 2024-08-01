@@ -2,7 +2,12 @@ import mongoose from "mongoose";
 
 const ticketSchema2 = new mongoose.Schema(
   {
-    userId: {
+    creatorId: {
+      type: String,
+      required: true,
+    },
+
+    creatorUsername: {
       type: String,
       required: true,
     },
@@ -10,7 +15,13 @@ const ticketSchema2 = new mongoose.Schema(
     assigneeId: {
       type: String,
       required: true,
-      default: "unassigned",
+      default: "null",
+    },
+
+    assigneeUsername: {
+      type: String,
+      required: true,
+      default: "Unassigned",
     },
 
     estimate: {
