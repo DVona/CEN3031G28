@@ -10,7 +10,7 @@ export default function Dashboard() {
   const { currentUser } = useSelector((state) => state.user);
   const [username, setUsername] = useState(currentUser.username || "");
   const [password, setPassword] = useState("");
-  const [image, setImage] = useState();
+  const [image, setImage] = useState("");
   const dispatch = useDispatch();
   const toast = useToast();
 
@@ -63,8 +63,10 @@ export default function Dashboard() {
   };
 
   const onIconChange = async (e) => {
-    console.log(e.target.files[0]);
-    setImage(e.target.files[0]);
+    const file = e.target.files[0];
+    const base64 = await convertImageToBase64(file);
+    console.log(base64);
+    setImage(base64);
   };
 
   const submitIcon = async (e) => {
@@ -81,14 +83,7 @@ export default function Dashboard() {
     }
     try {
       dispatch(updateStart());
-      const formData = new FormData();
-      formData.append("image", image);
-      const config = {
-        headers: {
-          "Content-type": "multipart/form-data",
-        },
-      };
-      const res = await axios.put(`/api/user/upload-image/${currentUser._id}`, formData);
+      const res = await axios.put(`/api/user/upload-image/${currentUser._id}`, {image});
       const data = res.data;
       if (data.success === false) {
         dispatch(updateFailure(data.message));
@@ -105,6 +100,7 @@ export default function Dashboard() {
     }
   }
     catch (error) {
+      console.log(error.response.data.message);
       toast({
         title: "Error Occured!",
         description: error.response.data.message,
@@ -150,3 +146,15 @@ export default function Dashboard() {
   );
 }
 
+function convertImageToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result)
+    };
+    fileReader.onerror = (error) => {
+      reject(error)
+    }
+  })
+}
