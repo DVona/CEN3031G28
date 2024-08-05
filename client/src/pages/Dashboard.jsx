@@ -126,8 +126,9 @@ export default function Dashboard() {
           <Button onClick={submitIcon}>
             Upload
           </Button>
+          </HStack>
           <FormControl id="Username" pt="4px" width="100%">
-          <Input  value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
+          <Input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
           </FormControl>
           <FormControl id="Password" pt="4px">
             <Input  value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
