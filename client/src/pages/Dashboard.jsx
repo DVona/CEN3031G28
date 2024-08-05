@@ -1,4 +1,4 @@
-import { Flex, Box, VStack, HStack, Text, Icon, Input, FormControl, Button, useToast } from "@chakra-ui/react";
+import { Flex, Box, VStack, HStack, Text, Image, Input, FormControl, Button, useToast } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 
@@ -10,10 +10,10 @@ export default function Dashboard() {
   const { currentUser } = useSelector((state) => state.user);
   const [username, setUsername] = useState(currentUser.username || "");
   const [password, setPassword] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(currentUser.icon || "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg");
   const dispatch = useDispatch();
   const toast = useToast();
-
+  
   const submitHandler = async (e) => {
     e.preventDefault();
     // Modify handler and api routes to allow for either a username or password to be updated independently
@@ -120,8 +120,7 @@ export default function Dashboard() {
           <Text as="u" fontWeight="bold" fontSize="4xl">
             {currentUser.username}'s Profile
           </Text>
-          <Box boxShadow='base' p='16' rounded='md' bg='currentColor'>
-          </Box>
+          <Image objectFit='cover' boxSize='175px' borderRadius='175px' src={image}/>
           <HStack spacing="20px">
           <Input size='md' type='file' accept="image/*" onChange={onIconChange} />
           <Button onClick={submitIcon}>
