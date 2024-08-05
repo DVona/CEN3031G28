@@ -6,6 +6,7 @@ import connectDB from "./database/connection.js";
 import ticket from "./routes/ticketRoutes.js";
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import ticketRoutes from "./routes/ticket.routes.js";
 
 const PORT = process.env.PORT || 5050;
 const app = express();
@@ -20,6 +21,7 @@ app.use("/ticket", ticket);
 // confirmed working
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/ticket", ticketRoutes);
 
 connectDB();
 

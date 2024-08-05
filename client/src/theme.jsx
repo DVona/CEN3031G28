@@ -17,6 +17,20 @@ const theme = extendTheme({
       code: {
         fontFamily: "source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace",
       },
+       '::-webkit-scrollbar': {
+        width: '12px',
+      },
+      '::-webkit-scrollbar-track': {
+        borderRadius: '10px',
+        background: '#f1f1f1',
+      },
+      '::-webkit-scrollbar-thumb': {
+        borderRadius: '10px',
+        background: '#888',
+      },
+      '::-webkit-scrollbar-thumb:hover': {
+        background: '#555',
+      },
     },
   },
 });

@@ -57,7 +57,8 @@ export const signout = (req, res, next) => {
 
 // function handling deleting users
 export const deleteUser = async (req, res, next) => {
-  if (!req.user.role === "Admin" && req.user.id !== req.params.userId) {
+  // readd user "userdeletion" later
+  if (!req.user.role === "Admin") {
     return next(errorhandler(403, "You are not allowed to delete this user"));
   }
   try {

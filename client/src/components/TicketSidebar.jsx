@@ -71,7 +71,7 @@ const MenuLinks = () => {
 
 const NavBarContainer = ({ children, ...props }) => {
   return (
-    <Flex height="100%" pl="5" pr="5" pt="5" {...props} borderRight="1px">
+    <Flex height="100vh" pl="5" pr="5" pt="5" {...props} borderRight="1px">
       {children}
     </Flex>
   );
