@@ -26,6 +26,23 @@ export const create = async (req, res, next) => {
     next(error);
   }
 };
+ 
+export const updateTicket = async (req, res, next) => {
+  const ticketId = req.params.ticketId;
+  const updatedData = req.body;
+
+  // add role check later (dont allow users to update tickets)
+  try {
+    const updatedTicket = await Ticket.findByIdAndUpdate(ticketId, updatedData, { new: true });
+
+    res.status(200).json({
+      message: "Ticket Updated Succesfully",
+      ticket: updatedTicket,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 export const deleteTicket = async (req, res, next) => {
   if (!req.user.role === "Admin") {
@@ -39,6 +56,20 @@ export const deleteTicket = async (req, res, next) => {
   }
 };
 
+export const getTicket = async(req, res, next) => {
+  try {
+    const ticket = await Ticket.findById(req.params.ticketId);
+
+    res.status(200).json({
+      message: "Ticket Found",
+      ticket,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+
 // function handling getting all ticket data
 export const getTickets = async (req, res, next) => {
   if (!req.user.role === "Admin") {
@@ -51,8 +82,8 @@ export const getTickets = async (req, res, next) => {
 
     const tickets = await Ticket.find().sort({ createdAt: sortDirection }).skip(startIndex).limit(limit);
     const totalTickets = await Ticket.countDocuments();
-    const now = new Date();
 
+    const now = new Date();
     const oneMonthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
 
     const lastMonthTickets = await Ticket.countDocuments({
@@ -62,6 +93,74 @@ export const getTickets = async (req, res, next) => {
       tickets,
       totalTickets,
       lastMonthTickets,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getTriageTickets = async (req, res, next) => {
+  if (!req.user.role === "Admin" || !req.user.role === "Employee") {
+    return next(errorhandler(403, "You are not allowed to retrieve ticket data"));
+  }
+  try {
+    const sortDirection = req.query.sort === "asc" ? 1 : -1;
+
+    const triageTickets = await Ticket.find({ arbitration: true }).sort({ createdAt: sortDirection });
+
+    res.status(200).json({
+      tickets: triageTickets,
+      totalTickets: triageTickets.length,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getOpenTickets = async (req, res, next) => {
+  try {
+    const startIndex = parseInt(req.query.startIndex) || 0;
+    const limit = parseInt(req.query.limit) || 9;
+    const filter = { open: true };
+
+    if (req.query.creatorId) {
+      filter.creatorId = req.query.creatorId;
+    } else if (req.query.assigneeId) {
+      filter.assigneeId = req.query.assigneeId;
+    }
+
+    const tickets = await Ticket.find(filter).sort({ createdAt: -1 }).skip(startIndex).limit(limit);
+    const totalTickets = await Ticket.countDocuments(filter);
+
+    res.status(200).json({
+      message: "retrieved open tickets",
+      tickets,
+      totalTickets,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getClosedTickets = async (req, res, next) => {
+  try {
+    const startIndex = parseInt(req.query.startIndex) || 0;
+    const limit = parseInt(req.query.limit) || 9;
+    const filter = { open: false };
+
+    if (req.query.creatorId) {
+      filter.creatorId = req.query.creatorId;
+    } else if (req.query.assigneeId) {
+      filter.assigneeId = req.query.assigneeId;
+    }
+
+    const tickets = await Ticket.find(filter).sort({ createdAt: -1 }).skip(startIndex).limit(limit);
+    const totalTickets = await Ticket.countDocuments(filter);
+
+    res.status(200).json({
+      message: "retrieved closed tickets",
+      tickets,
+      totalTickets,
     });
   } catch (error) {
     next(error);

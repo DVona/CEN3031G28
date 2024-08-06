@@ -27,7 +27,7 @@ export default function Tickets() {
     }
   }, [location.search]);
   return (
-    <Flex direction="row" height="100vh" position="fixed" width="100%" >
+    <Flex direction="row" minHeight="20vh" maxHeight="100vh" position="fixed" width="100%" >
       <SideBar />
       {tab === "create" && <CreateTicket />}
       {tab === "tickets" && isAdmin && <AllTickets />}

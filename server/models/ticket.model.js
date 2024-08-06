@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const ticketSchema2 = new mongoose.Schema(
+const ticketSchema = new mongoose.Schema(
   {
     creatorId: {
       type: String,
@@ -30,6 +30,12 @@ const ticketSchema2 = new mongoose.Schema(
       default: "unknown",
     },
 
+    hoursworked: {
+      type: String,
+      required: true,
+      default: "not worked on",
+    },
+
     category: {
       type: String,
       required: true,
@@ -55,6 +61,7 @@ const ticketSchema2 = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Ticket2 = mongoose.model("Ticket2", ticketSchema2);
+const Ticket = mongoose.model("Ticket", ticketSchema);
 
-export default Ticket2;
+export default Ticket;
+  
