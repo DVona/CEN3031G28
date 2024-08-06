@@ -5,3 +5,5 @@ export default function PrivateRoute() {
   const { currentUser } = useSelector((state) => state.user);
   return currentUser ? <Outlet /> : <Navigate to="/" />;
 }
+
+// adapted from: https://github.com/sahandghavidel/mern-blog/tree/main

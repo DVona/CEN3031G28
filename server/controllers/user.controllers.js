@@ -3,6 +3,7 @@ import { errorhandler } from "../utils/error.js";
 import User from "../models/user.model.js";
 
 // function handing updating user info
+// adapted from: https://github.com/sahandghavidel/mern-blog/tree/main
 export const updateUser = async (req, res, next) => {
   if (req.user.id !== req.params.userId) {
     return next(errorHandler(403, "You are not allowed to update this user"));
@@ -47,6 +48,7 @@ export const updateUser = async (req, res, next) => {
 };
 
 // function handling user signout
+// adapted from: https://github.com/sahandghavidel/mern-blog/tree/main
 export const signout = (req, res, next) => {
   try {
     res.clearCookie("access_token").status(200).json("User has been signed out");

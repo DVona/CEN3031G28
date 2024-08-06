@@ -30,6 +30,7 @@ app.listen(PORT, () => {
 });
 
 // middleware for error handling
+// adapted from: https://github.com/sahandghavidel/mern-blog/tree/main
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";

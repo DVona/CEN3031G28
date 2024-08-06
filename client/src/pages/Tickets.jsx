@@ -5,13 +5,13 @@ import { useToast, Flex } from "@chakra-ui/react";
 
 import SideBar from "../components/TicketSidebar";
 import CreateTicket from "../components/TicketCreate";
-
-import AllTickets from "../components/TicketAllTickets"; // in prog
-import TriageTickets from "../components/TicketTriage"; // in prog
-
+import AllTickets from "../components/TicketAllTickets";
+import TriageTickets from "../components/TicketTriage"; 
 import OpenTickets from "../components/TicketOpen";
 import ClosedTickets from "../components/TicketClosed";
 
+
+// tab control adapted from: https://github.com/sahandghavidel/mern-blog/tree/main
 export default function Tickets() {
   const { currentUser } = useSelector((state) => state.user);
   const isAdmin = currentUser?.role === "Admin";

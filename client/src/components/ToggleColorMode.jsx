@@ -12,3 +12,5 @@ const ToggleColorMode = () => {
 };
 
 export default ToggleColorMode;
+
+// adapted from: https://www.youtube.com/watch?v=gCl78ZUGHg4

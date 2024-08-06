@@ -5,6 +5,8 @@ import axios from "axios";
 
 import { updateStart, updateSuccess, updateFailure } from "../redux/user/userSlice";
 
+
+// basic framework adapted from: https://github.com/sahandghavidel/mern-blog/tree/main
 export default function Dashboard() {
   const { currentUser } = useSelector((state) => state.user);
   const [username, setUsername] = useState(currentUser.username || "");

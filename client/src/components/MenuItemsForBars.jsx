@@ -13,3 +13,5 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
 };
 
 export default MenuItem;
+
+// adapted from: https://github.com/dimitrisraptis96/chakra-ui-navbar

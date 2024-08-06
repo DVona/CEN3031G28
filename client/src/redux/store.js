@@ -21,3 +21,5 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+// adpated from: https://github.com/sahandghavidel/mern-blog/tree/main
