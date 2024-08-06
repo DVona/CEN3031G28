@@ -3,11 +3,11 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 
 import connectDB from "./database/connection.js";
-import ticket from "./routes/ticketRoutes.js";
 
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import ticketRoutes from "./routes/ticket.routes.js";
+import eventRoutes from "./routes/event.routes.js";
 
 const PORT = process.env.PORT || 5050;
 const app = express();
@@ -15,12 +15,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
-app.use("/ticket", ticket);
 
 // confirmed working
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/ticket", ticketRoutes);
+app.use("/api/event", eventRoutes);
 
 connectDB();
 

@@ -104,3 +104,24 @@ export const getUsers = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getEmployees = async (req, res, next) => {
+  if (!req.user.role === "Admin") {
+    return next(errorhandler(403, "You are not allowed to retrieve employee data"));
+  }
+  try {
+    const employees = await User.find({ role: "Employee" });
+
+    const employeesWithoutPassword = employees.map((user) => {
+      const { password, ...rest } = user._doc;
+      return rest;
+    });
+
+    res.status(200).json({
+      message: "retrieved employee data",
+      employees: employeesWithoutPassword,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
