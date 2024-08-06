@@ -16,11 +16,6 @@ const userSchema = new mongoose.Schema(
       default: "User",
       required: true,
     },
-    tickets: {
-      // Contains ticket ids associated with a user or assigned to an employee
-      // In Progress
-      type: [String],
-    },
   },
   { timestamps: true }
 );
