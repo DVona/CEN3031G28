@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import { errorhandler } from "../utils/error.js";
 
 // signup function for users (will overcomment to help understand)
+// adapted from: https://github.com/sahandghavidel/mern-blog/tree/main
 export const signup = async (req, res, next) => {
   // forms the body of the request into data we will use
   const { username, password } = req.body;
@@ -50,6 +51,7 @@ export const adminsignup = async (req, res, next) => {
 };
 
 // signin function for users
+// adapted from: https://github.com/sahandghavidel/mern-blog/tree/main
 export const signin = async (req, res, next) => {
   const { username, password } = req.body;
 

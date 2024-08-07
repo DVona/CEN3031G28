@@ -57,3 +57,5 @@ const userSlice = createSlice({
 export const { signInStart, signInSucess, signInFailure, updateStart, updateSuccess, updateFailure, ticketSubmitStart, ticketSubmitSuccess, ticketSubmitFailure, signoutSuccess } = userSlice.actions;
 
 export default userSlice.reducer;
+
+// adapted from: https://github.com/sahandghavidel/mern-blog/tree/main

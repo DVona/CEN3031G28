@@ -14,3 +14,5 @@ export const verifyToken = (req, res, next) => {
     next();
   });
 };
+
+// adapted from: https://github.com/sahandghavidel/mern-blog/tree/main

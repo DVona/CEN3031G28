@@ -90,3 +90,5 @@ const NavBarContainer = ({ children, ...props }) => {
 };
 
 export default NavBar;
+
+// adapted from: https://github.com/dimitrisraptis96/chakra-ui-navbar
