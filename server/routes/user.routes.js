@@ -9,5 +9,6 @@ router.post("/signout", signout);
 router.delete("/delete/:userId", verifyToken, deleteUser);
 router.get("/getusers", verifyToken, getUsers);
 router.get("/getemployees", verifyToken, getEmployees);
+router.put("/upload-image/:userId", verifyToken, uploadIcon);
 
 export default router;

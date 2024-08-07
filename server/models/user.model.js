@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema(
       default: "User",
       required: true,
     },
+    icon: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );
