@@ -64,14 +64,14 @@ const MenuLinks = () => {
           <>
             <MenuItem onClick={handleSignout}>Sign Out</MenuItem>
             <MenuItem to="/sign-up-admin" isLast>
-              <Button size="sm" rounded="md">
+              <Button colorScheme="blue" size="sm" rounded="md">
                 Create Account
               </Button>
             </MenuItem>
           </>
         ) : (
           <MenuItem>
-            <Button size="sm" rounded="md" color="black" bg="white" onClick={handleSignout}>
+            <Button colorScheme="blue" onClick={handleSignout}>
               Sign Out
             </Button>
           </MenuItem>

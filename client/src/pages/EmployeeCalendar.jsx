@@ -8,7 +8,6 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import axios from "axios";
-/*
 
 export default function EmployeeCalendar() {
   const { currentUser } = useSelector((state) => state.user);
@@ -145,28 +144,6 @@ export default function EmployeeCalendar() {
           </ModalContent>
         </Modal>
       )}
-    </Flex>
-  );
-}
-*/
-
-export default function EmployeeCalendar() {
-  return (
-    <Flex alignItems="center" justifyContent="center">
-      <Box width="60%" mt="10">
-        <FullCalendar
-          plugins={[dayGridPlugin, timeGridPlugin]}
-          initialView="dayGridMonth"
-          headerToolbar={{
-            start: "title",
-            center: "",
-            end: "dayGridMonth,dayGridWeek,timeGridDay",
-          }}
-          height="80vh"
-          // TODO: implement onClick -> ticket URL
-          events={[{ title: "Ticket #1", start: "2024-07-30T11:30:00", end: "2024-07-30T13:00:00", allDay: false, url: "https://google.com" }]}
-        />
-      </Box>
     </Flex>
   );
 }
